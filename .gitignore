@@ -1,0 +1,76 @@
+# Android Studio / Gradle / Kotlin / Java common ignores
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+*.iws
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/gradle.xml
+.idea/**/dictionaries
+
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Files for the Android Emulator
+*.lock
+
+# Signing files
+*.jks
+*.keystore
+
+# Kotlin specific
+**/*.kotlin_module
+
+# Generated files
+/generated/
+**/generated/
+/build/generated/source/apt/
+
+# External native build folder
+.externalNativeBuild/
+
+# NDK / CMake
+obj/
+.cxx/
+
+# Crashlytics and Fabric
+crashlytics.properties
+fabric.properties
+
+# Google Services (e.g. google-services.json)
+# Keep if you want to track it, otherwise ignore
+# google-services.json
+
+# Misc
+*.log
+*.class
+*.jar
+*.war
+*.ear
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Gradle Wrapper
+gradle/wrapper/gradle-wrapper.jar
+
+# Android Studio captures and run configurations
+captures/
+
+# Keep local env files out of VCS
+.env
+.env.*
+
+# Jetifier logs
+jetifier.log
+
+# Kotlin daemon
+.kotlin-daemon/
+
