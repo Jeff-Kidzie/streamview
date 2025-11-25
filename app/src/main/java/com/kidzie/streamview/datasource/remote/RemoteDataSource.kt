@@ -1,4 +1,4 @@
-package com.kidzie.streamview.datasource
+package com.kidzie.streamview.datasource.remote
 
 interface RemoteDataSource {
     suspend fun requestNowPlayingMovie()
