@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.kidzie.streamview.feature.home.screen.ContainerHomePage
+import com.kidzie.streamview.feature.home.screen.HomePage
 import com.kidzie.streamview.ui.theme.StreamviewTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,10 +22,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             StreamviewTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    ContainerHomePage(modifier = Modifier.padding(innerPadding))
+//                    Greeting(
+//                        name = "Android",
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
                 }
             }
         }
