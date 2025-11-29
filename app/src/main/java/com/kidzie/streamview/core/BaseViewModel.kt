@@ -26,6 +26,7 @@ abstract class BaseViewModel<E : Event, VS : ViewState, EF : Effect>(
 ) : ViewModel() {
 
     private val exceptionHandler = CoroutineExceptionHandler { _, exception ->
+        setLoading(false)
         handleError(exception)
     }
 
@@ -34,8 +35,11 @@ abstract class BaseViewModel<E : Event, VS : ViewState, EF : Effect>(
 
     private val _effect = MutableSharedFlow<EF>(
         extraBufferCapacity = 1 // Prevent blocking when emitting effects
-    )
+     )
     val effect: SharedFlow<EF> = _effect.asSharedFlow()
+
+    private val _loading = MutableStateFlow(false)
+    val loading: StateFlow<Boolean> = _loading.asStateFlow()
 
     protected abstract fun reduce(event: E, currentState: VS): VS
 
@@ -57,6 +61,26 @@ abstract class BaseViewModel<E : Event, VS : ViewState, EF : Effect>(
 
     protected fun updateState(transform: (VS) -> VS) {
         _state.update(transform)
+    }
+
+    /**
+     * Manually set the loading state.
+     */
+    protected fun setLoading(isLoading: Boolean) {
+        _loading.value = isLoading
+    }
+
+    /**
+     * Execute a block with automatic loading state management.
+     * Loading is set to true before execution and false after completion or error.
+     */
+    protected suspend fun <T> withLoading(block: suspend () -> T): T {
+        return try {
+            setLoading(true)
+            block()
+        } finally {
+            setLoading(false)
+        }
     }
 
     /**

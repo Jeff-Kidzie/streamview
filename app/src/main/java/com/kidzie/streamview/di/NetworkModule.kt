@@ -25,7 +25,7 @@ val networkModule = module {
     single { provideOkHttpClient(get(), get()) }
 
     // Retrofit
-    single { provideRetrofit(get(), get()) }
+    single { provideRetrofit(get(), "https://api.themoviedb.org/3/") }
 }
 
 private fun provideBaseUrl(): String {

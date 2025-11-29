@@ -1,5 +1,6 @@
 package com.kidzie.streamview.di
 
+import com.kidzie.streamview.feature.home.viewmodel.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -13,8 +14,6 @@ import org.koin.dsl.module
  * viewModel { (movieId: Int) -> MovieDetailViewModel(movieId, get()) }
  */
 val viewModelModule = module {
-    // Add your ViewModels here
-    // Example:
-    // viewModel { MovieViewModel(get()) }
+    viewModel { HomeViewModel(get()) }
 }
 
